@@ -26,8 +26,9 @@ public partial class AddClass : ContentPage
             sm.Id = i+1;
             return sm;
         }));
+        model.Students = new ObservableCollection<StudentModel>(model.Students.OrderBy(x => x.Id));
 
-        xmlDocument.Element("Classes").Add(new XElement(
+       xmlDocument.Element("Classes").Add(new XElement(
                 "Class",
                 new XElement("Id",model.Id),
                 new XElement("Name",model.Name),

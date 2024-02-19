@@ -101,7 +101,7 @@ public partial class ClassPage : ContentPage
         pickedNumber.Text = student.Id.ToString();
         pickedStudent.Text = student.Name + " " + student.Surname;
 
-        UpdatePickedCountdown(student.Id-1);
+        UpdatePickedCountdown(student.Id);
     }
 
     private void UpdatePickedCountdown(int studentIndex)
@@ -113,7 +113,7 @@ public partial class ClassPage : ContentPage
             student.PickedCountdown--;
         };
 
-        model.Students[studentIndex].PickedCountdown = 3;
+        model.Students.Where(s => s.Id == studentIndex).Single().PickedCountdown = 3;
 
         BindingContext = model;
 
@@ -140,6 +140,9 @@ public partial class ClassPage : ContentPage
             DisplayAlert("Wyœwietlanie listy uczniów", "List uczniów jest pusta!", "Zamknij");
             return;
         }
+
+        model.Students = new ObservableCollection<StudentModel>(model.Students.OrderBy(x => x.Id));
+        BindingContext = model;
 
         StudentListFrame.IsVisible = !StudentListFrame.IsVisible;
         PickStudentFrame.WidthRequest = StudentListFrame.IsVisible ? 400 : 840;
