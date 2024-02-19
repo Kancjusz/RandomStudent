@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomStudent.Views.ClassPage"
+             xmlns:models="clr-namespace:RandomStudent.Models"
+             Title="Klasa">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/ClassPageStyle.css"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <models:ClassModel/>
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <Grid Margin="0" Padding="0">
+            <Label x:Name="Title" Text="Klasa" HorizontalOptions="Start"/>
+            <Frame x:Name="LuckyNumberFrame" HorizontalOptions="End" HeightRequest="40">
+                <HorizontalStackLayout>
+                    <Label Padding="0" Text="Szczęśliwy Numerek: " HeightRequest="40"/>
+                    <Label x:Name="LuckyNumberLabel" Text="Brak"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </Grid>
+    </Shell.TitleView>
+    <ScrollView>
+        <Frame x:Name="ClassPageContentFrame">
+            <VerticalStackLayout WidthRequest="900" x:Name="ClassPageLayout">
+                <Frame>
+                    <Grid ColumnDefinitions="*,3*,2*,2*">
+                        <Button Text="←" Clicked="BackButton_Clicked" WidthRequest="100" HeightRequest="50" 
+                        FontSize="30" HorizontalOptions="Start" Grid.Column="0"/>
+                        <Button Text="Wyświetl listę uczniów" Clicked="ShowStudentListButton_Clicked" HeightRequest="50" Grid.Column="2"/>
+                        <Button Text="Edytuj listę uczniów" Clicked="EditStudentListButton_Clicked" HeightRequest="50" Grid.Column="3"/>
+                    </Grid>
+                </Frame>
+                <Frame>
+                    <HorizontalStackLayout MinimumHeightRequest="500">
+                        <Frame x:Name="StudentListFrame" IsVisible="false">
+                            <Grid MaximumHeightRequest="500">
+                                <CollectionView ItemsSource="{Binding Students}" WidthRequest="400" HeightRequest="450" ItemSizingStrategy="MeasureFirstItem">
+                                    <CollectionView.Header>
+                                        <Frame BackgroundColor="#018176" CornerRadius="10">
+                                            <Grid ColumnDefinitions="*,*,*,*">
+                                                <Label Text="Numer" Grid.Column="0"
+                                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                               TextColor="Wheat"/>
+                                                <Label Text="Imię" Grid.Column="1"
+                                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                               TextColor="Wheat"/>
+                                                <Label Text="Nazwisko" Grid.Column="2"
+                                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                               TextColor="Wheat"/>
+                                                <Label Text="Obecność" Grid.Column="3"
+                                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                               TextColor="Wheat"/>
+                                            </Grid>
+                                        </Frame>
+                                    </CollectionView.Header>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="*,*,*,*">
+                                                <Label Text="{Binding Id}" Grid.Column="0" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding Name}" Grid.Column="1" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding Surname}" Grid.Column="2" VerticalTextAlignment="Center"/>
+                                                <CheckBox IsChecked="{Binding IsPresent,FallbackValue=True}" Grid.Column="3" 
+                                                  VerticalOptions="Center" HorizontalOptions="Center"
+                                                  CheckedChanged="Present_CheckedChange"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </Frame>
+                        <Frame x:Name="PickStudentFrame" WidthRequest="840" Margin="20">
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label x:Name="pickedNumber"/>
+                                <Label x:Name="pickedStudent"/>
+                                <Button Text="Losuj ucznia" Clicked="RandomStudentButton_Clicked" HeightRequest="50" MaximumWidthRequest="400" MinimumWidthRequest="200"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

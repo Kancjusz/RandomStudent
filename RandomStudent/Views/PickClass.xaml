@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomStudent.Views.PickClass"
+             xmlns:models="clr-namespace:RandomStudent.Models"
+             xmlns:controls="clr-namespace:RandomStudent.Controls"
+             Title="Wybór Klasy">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/PickClassStyle.css"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <models:ClassListModel/>
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <Grid>
+            <Label x:Name="Title" Text="Wybór Klasy" HorizontalOptions="Start"/>
+            <Frame x:Name="LuckyNumberFrame" HorizontalOptions="End" HeightRequest="40">
+                <HorizontalStackLayout>
+                    <Label Padding="0" Text="Szczęśliwy Numerek: " HeightRequest="40"/>
+                    <Label x:Name="LuckyNumberLabel" Text="Brak"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </Grid>
+    </Shell.TitleView>
+    <ScrollView>
+        <VerticalStackLayout x:Name="pageContent">
+            <Frame Margin="0,50,0,0" WidthRequest="900" x:Name="headerFrame">
+                <Button Text="Dodaj nową klasę" 
+                    Clicked="AddNewClass_Clicked" 
+                    WidthRequest="400"
+                    HeightRequest="50"/>
+            </Frame>
+            <Frame x:Name="classListFrame" WidthRequest="900">
+                <Grid MaximumHeightRequest="520">
+                    <CollectionView ItemsSource="{Binding ClassList}"
+                        HeightRequest="520"
+                        SelectionMode="Single"
+                        SelectionChanged="classCollection_SelectionChanged"
+                        ItemSizingStrategy="MeasureFirstItem">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" HorizontalItemSpacing="10" VerticalItemSpacing="10" Span="4"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <controls:ClassControl ClassName="{Binding Name}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

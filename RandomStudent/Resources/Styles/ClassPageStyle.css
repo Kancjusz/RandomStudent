@@ -1,0 +1,80 @@
+button {
+    background-color: #018176;
+    color: wheat;
+    border-radius: 20;
+}
+
+label{
+    text-align:center;
+    color:wheat;
+}
+
+grid label {
+    color: ghostwhite;
+    font-size: 15;
+}
+
+checkBox {
+    color: #018176;
+}
+
+^grid {
+    padding: 0,10;
+}
+
+#ClassPageContentFrame {
+    background-color: rgb(37, 48, 52);
+    padding-top:50;
+    border-radius:0;
+}
+
+#ClassPageLayout>*{
+    margin:0,10;
+}
+
+#ClassPageLayout > frame {
+    padding: 10;
+    background-color: rgb(49, 63, 68);
+    border-radius: 10;
+}
+
+#StudentListFrame {
+    background-color: rgb(57, 72, 78);
+    border-radius: 10;
+}
+
+#PickStudentFrame{
+    background-color:transparent;
+}
+
+#pickedNumber{
+    margin:10;
+    font-size:40;
+}
+#pickedStudent{
+    margin:0,5,0,20;
+    font-size:20;
+}
+
+#Title {
+    color: wheat;
+    margin: 10,0;
+    font-size: 30;
+}
+
+#LuckyNumberFrame {
+    background-color: rgb(37, 48, 52);
+    padding: 5,0;
+    margin: 5,0;
+}
+
+#LuckyNumberFrame label {
+    color: wheat;
+    margin: 5,0;
+    font-size: 20;
+    font-weight: bold;
+    -maui-vertical-text-alignment: center;
+}
+
+
+

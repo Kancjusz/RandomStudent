@@ -1,0 +1,52 @@
+contentpage {
+    background-color: rgb(37, 48, 52);
+}
+
+button {
+    background-color: #018176;
+    color: wheat;
+    border-radius: 20;
+}
+
+frame {
+    padding: 10;
+    background-color: rgb(49, 63, 68);
+    border-radius: 10;
+}
+
+label{
+    text-align:center;
+    color:wheat;
+    font-size:20;
+}
+
+verticalStackLayout > * {
+    margin: 0,5;
+}
+
+^inputview {
+    margin: 0,3;
+    color: #017166;
+    background-color: #d4cfc9;
+}
+
+#AddClassPageContent {
+    background-color: rgb(37, 48, 52);
+    padding-top:50;
+    border-radius:0;
+}
+
+#AddClassLayout > * {
+    margin: 0,10;
+}
+
+#AddClassbutton{
+    font-size:20;
+}
+
+#StudentListFrame {
+    padding: 5,15;
+    background-color: rgb(57, 72, 78);
+}
+
+

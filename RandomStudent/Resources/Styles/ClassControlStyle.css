@@ -1,0 +1,17 @@
+.ClassControlBorder {
+    padding: 0,0,0,5;
+    background-color: #018176;
+    border-radius: 20;
+}
+
+.ClassControlContent {
+    padding: 0,70;
+    background-color: rgb(57, 72, 78);
+    border-radius: 10;
+}
+
+.ClassControlContent label {
+    text-align: center;
+    font-size: 20;
+    color: wheat;
+}

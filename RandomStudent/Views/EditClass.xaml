@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomStudent.Views.EditClass"
+             xmlns:models="clr-namespace:RandomStudent.Models"
+             Title="Edycja Klasy">
+    <ContentPage.BindingContext>
+        <models:ClassModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/EditClassStyle.css"/>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Frame x:Name="EditClassContentFrame">
+            <StackLayout Orientation="Vertical" WidthRequest="900">
+                <Frame>
+                    <StackLayout Orientation="Vertical">
+                        <Button Text="Dodaj ucznia" Clicked="AddStudent_Clicked" WidthRequest="200" HeightRequest="100"/>
+
+                        <Frame x:Name="EditStudentListFrame">
+                            <Grid MaximumHeightRequest="500">
+                                <CollectionView ItemsSource="{Binding Students}" x:Name="editStudentList" HeightRequest="300" ItemSizingStrategy="MeasureFirstItem">
+                                    <CollectionView.Header>
+                                        <Grid ColumnDefinitions="4*,4*,*" ColumnSpacing="20" Padding="50,0">
+                                            <Label Text="Imię" Grid.Column="0" TextColor="Wheat" HorizontalTextAlignment="Center"/>
+                                            <Label Text="Nazwisko" Grid.Column="1" TextColor="Wheat" HorizontalTextAlignment="Center"/>
+                                            <Label Grid.Column="2"/>
+                                        </Grid>
+                                    </CollectionView.Header>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="4*,4*,*" ColumnSpacing ="20">
+                                                <Editor Text="{Binding Name}" Grid.Column="0"/>
+                                                <Editor Text="{Binding Surname}" Grid.Column="1"/>
+                                                <Button Text="X" Clicked="DeleteStudentButton_Clicked" Grid.Column="2"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Button Text="Edytuj klasę" Clicked="EditClass_Clicked" HeightRequest="50" WidthRequest="100"/>
+                        <Button Text="Anuluj" Clicked="CancelButton_Clicked" HeightRequest="50" WidthRequest="100"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,44 @@
+contentpage {
+    background-color: rgb(37, 48, 52);
+}
+
+#pageContent{
+    background-color:rgb(37, 48, 52);
+}
+
+#headerFrame{
+    background-color:transparent;
+}
+
+#headerFrame button{
+    background-color: #018176;
+    color: wheat;
+    border-radius: 20;
+}
+
+#classListFrame {
+    background-color: rgb(49, 63, 68);
+    color: wheat;
+    border-radius: 20;
+    border-color: transparent;
+}
+
+#Title{
+    color:wheat;
+    margin: 10,0;
+    font-size: 30;
+}
+
+#LuckyNumberFrame {
+    background-color: rgb(37, 48, 52);
+    padding: 5,0;
+    margin: 5,0;
+}
+
+#LuckyNumberFrame label{
+    color:wheat;
+    margin: 5,0;
+    font-size: 20;
+    font-weight: bold;
+    -maui-vertical-text-alignment: center;
+}

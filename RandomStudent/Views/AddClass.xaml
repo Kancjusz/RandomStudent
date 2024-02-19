@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RandomStudent.Views.AddClass"
+             xmlns:models="clr-namespace:RandomStudent.Models"
+             Title="Dodanie Nowej Klasy">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/AddClassStyle.css"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <models:ClassModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Frame x:Name="AddClassPageContent">
+            <VerticalStackLayout WidthRequest="900" x:Name="AddClassLayout">
+                <Frame x:Name="ClassNameFrame">
+                    <VerticalStackLayout>
+                        <Label Text="Nazwa klasy"/>
+                        <Editor Text="{Binding Name}" HeightRequest="40" WidthRequest="400"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame>
+                    <VerticalStackLayout>
+                        <Button Text="Dodaj ucznia" Clicked="AddStudent_Clicked" x:Name="AddClassButton" WidthRequest="200" HeightRequest="80"/>
+                        <Frame x:Name="StudentListFrame" IsVisible="false">
+                            <StackLayout x:Name="StudentListView" MaximumHeightRequest="500">
+                                <CollectionView ItemsSource="{Binding Students}" HeightRequest="300" ItemSizingStrategy="MeasureFirstItem">
+                                    <CollectionView.Header>
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="20" Padding="50,0" StyleClass="studentsHeaderGrid">
+                                            <Label Text="Imię" Grid.Column="0" TextColor="Wheat" HorizontalTextAlignment="Center"/>
+                                            <Label Text="Nazwisko" Grid.Column="1" TextColor="Wheat" HorizontalTextAlignment="Center"/>
+                                        </Grid>
+                                    </CollectionView.Header>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="*,*" ColumnSpacing="20" Padding="50,0">
+                                                <Editor Text="{Binding Name}" Grid.Column="0" HeightRequest="30"/>
+                                                <Editor Text="{Binding Surname}" Grid.Column="1" HeightRequest="30"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Grid ColumnDefinitions="*,*" WidthRequest="800" ColumnSpacing="50">
+                    <Button Text="Dodaj klasę" Clicked="AddClass_Clicked" Grid.Column="0" HeightRequest="50"/>
+                    <Button Text="Anuluj" Clicked="CancelButton_Clicked" Grid.Column="1" HeightRequest="50"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+    </ScrollView>
+</ContentPage>

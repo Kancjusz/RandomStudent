@@ -1,0 +1,56 @@
+contentpage {
+    background-color: rgb(37, 48, 52);
+}
+
+button {
+    background-color: #018176;
+    color: wheat;
+    border-radius: 20;
+}
+
+frame {
+    padding: 10;
+    background-color: rgb(49, 63, 68);
+    border-radius: 10;
+}
+
+label {
+    text-align: center;
+    -maui-vertical-text-alignment: center;
+    color:wheat;
+    font-size: 20;
+}
+
+grid {
+    padding:50,0;
+}
+
+grid>button{
+    border-radius:5;
+}
+
+^stackbase {
+    padding: 10;
+    margin: 10;
+    -maui-spacing:20;
+}
+
+^inputview {
+    margin: 0,2;
+    color: #017166;
+    background-color: #d4cfc9;
+}
+
+#EditClassContentFrame {
+    background-color: rgb(37, 48, 52);
+    padding-top: 50;
+    border-radius: 0;
+}
+
+#EditStudentListFrame {
+    padding: 5,15;
+    background-color: rgb(57, 72, 78);
+    border-radius:10;
+}
+
+
